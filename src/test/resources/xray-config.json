@@ -1,0 +1,18 @@
+
+{
+  "fields": {
+    "project": {
+      "id": "10006"
+    },
+    "summary": "Test execution android",
+    "issuetype": {
+      "id": "10007"
+    },
+    "components" : [
+    ]
+  },
+  "xrayFields": {
+      "testPlanKey": "TBSI-28",
+    "environments": []
+  }
+}

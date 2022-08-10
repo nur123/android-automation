@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.24"
+    id "se.thinkcode.cucumber-runner" version "0.0.11"
+//    id "org.jetbrains.kotlin.jvm" version "1.3.40"
+//    id 'org.jetbrains.kotlin.multiplatform' version '1.6.10'
+//    id 'org.jetbrains.kotlin.plugin.serialization' version '1.3.3'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+cucumberReports {
+    outputDir = file("build/generated-reports")
+    reports = files("build/cucumber.json")
+}
+
+cucumber {
+
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+//    implementation group: 'io.appium', name: 'java-client', version: '7.6.0'
+    implementation 'com.github.appium:java-client:v8.1.1'
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.1.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.1.0'
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.1.1'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41"
+//    testImplementation "org.jetbrains.kotlin:kotlin-test:1.3.41"
+//    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3'
+}
+
+task publishToXray(type: JavaExec) {
+    group = "Publishing"
+    description = "Publish to Xray"
+    main = "xray.MainClass"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+
+test {
+//    useJUnitPlatform()
+}
